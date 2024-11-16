@@ -1,15 +1,26 @@
-body {
+html, body {
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    background-color: #faf8ef;
+}
+
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #faf8ef;
 }
 
 .container {
     text-align: center;
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    max-width: 500px;
+    box-sizing: border-box;
 }
 
 .header {
@@ -17,19 +28,23 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 h1 {
     color: #776e65;
-    font-size: 80px;
+    font-size: 60px;
     margin: 0;
+    line-height: 1;
 }
 
 .score-container {
     background-color: #bbada0;
     color: white;
-    padding: 10px 20px;
+    padding: 8px 15px;
     border-radius: 5px;
+    min-width: 80px;
 }
 
 .score-label {
@@ -45,12 +60,13 @@ h1 {
 .game-board {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 15px;
+    grid-gap: 10px;
     background-color: #bbada0;
     border-radius: 5px;
-    padding: 15px;
-    width: 500px;
-    height: 500px;
+    padding: 10px;
+    width: 100%;
+    aspect-ratio: 1;
+    box-sizing: border-box;
 }
 
 .tile {
@@ -59,13 +75,13 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: bold;
     color: #776e65;
     transition: all 0.2s ease-in-out;
-    width: 106px;
-    height: 106px;
     position: relative;
+    aspect-ratio: 1;
+    width: 100%;
 }
 
 .tile-2 { background-color: #eee4da; }
@@ -77,33 +93,94 @@ h1 {
 .tile-128 {
     background-color: #edcf72;
     color: white;
-    font-size: 35px;
+    font-size: 30px;
 }
 .tile-256 {
     background-color: #edcc61;
     color: white;
-    font-size: 35px;
+    font-size: 30px;
 }
 .tile-512 {
     background-color: #edc850;
     color: white;
-    font-size: 35px;
+    font-size: 30px;
 }
 .tile-1024 {
     background-color: #edc53f;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 .tile-2048 {
     background-color: #edc22e;
     color: white;
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .instructions {
     margin-top: 20px;
     color: #776e65;
     font-size: 16px;
+}
+
+@media (max-width: 350px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    .score-container {
+        padding: 5px 10px;
+        min-width: 60px;
+    }
+
+    .game-board {
+        grid-gap: 5px;
+        padding: 5px;
+    }
+
+    .tile {
+        font-size: 25px;
+    }
+
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 20px;
+    }
+
+    .tile-1024, .tile-2048 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        width: calc(100% - 20px);
+        padding: 10px;
+    }
+
+    .header {
+        justify-content: center;
+        gap: 15px;
+    }
+
+    h1 {
+        font-size: 48px;
+    }
+    
+    .tile {
+        font-size: 30px;
+    }
+    
+    .tile-128, .tile-256, .tile-512 {
+        font-size: 25px;
+    }
+    
+    .tile-1024, .tile-2048 {
+        font-size: 20px;
+    }
+
+    .instructions {
+        font-size: 14px;
+        margin-top: 15px;
+    }
 }
 
 @keyframes appear {
