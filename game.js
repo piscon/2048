@@ -157,7 +157,7 @@ class Game2048 {
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
                 if (this.board[i][j] === 2048) {
-                    alert('🎉恭喜，挑战成功！');
+                    alert('🎉恭喜你，挑战成功！');
                     return;
                 }
             }
@@ -186,7 +186,7 @@ class Game2048 {
         }
 
         if (gameOver) {
-            alert('😭挑战失败你的最终得分是' + this.score + '分');
+            alert('😭挑战失败，你的最终得分是' + this.score);
         }
     }
 
