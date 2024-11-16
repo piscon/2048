@@ -14,7 +14,7 @@ class Game2048 {
     setupBoard() {
         this.gameBoard.innerHTML = '';
         this.board = Array(this.boardSize).fill().map(() => Array(this.boardSize).fill(0));
-        
+
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
                 const cell = document.createElement('div');
@@ -50,7 +50,7 @@ class Game2048 {
             for (let j = 0; j < this.boardSize; j++) {
                 const cell = this.gameBoard.querySelector(`[data-row="${i}"][data-col="${j}"]`);
                 const value = this.board[i][j];
-                
+
                 cell.textContent = value !== 0 ? value : '';
                 cell.className = 'tile';
                 if (value !== 0) {
@@ -81,7 +81,7 @@ class Game2048 {
             for (let i = 0; i < this.boardSize; i++) {
                 // First, remove zeros and get the numbers
                 let row = this.board[i].filter(val => val);
-                
+
                 // Merge only once per pair
                 for (let j = 0; j < row.length - 1; j++) {
                     if (row[j] === row[j + 1]) {
@@ -91,12 +91,12 @@ class Game2048 {
                         moved = true;
                     }
                 }
-                
+
                 // Fill the rest with zeros
                 while (row.length < this.boardSize) {
                     row.push(0);
                 }
-                
+
                 if (JSON.stringify(this.board[i]) !== JSON.stringify(row)) {
                     moved = true;
                 }
@@ -157,7 +157,7 @@ class Game2048 {
         for (let i = 0; i < this.boardSize; i++) {
             for (let j = 0; j < this.boardSize; j++) {
                 if (this.board[i][j] === 2048) {
-                    alert('Congratulations! You won!');
+                    alert('🎉恭喜，挑战成功！');
                     return;
                 }
             }
@@ -171,7 +171,7 @@ class Game2048 {
                     gameOver = false;
                     break;
                 }
-                
+
                 // Check adjacent cells for possible merges
                 if (j < this.boardSize - 1 && this.board[i][j] === this.board[i][j+1]) {
                     gameOver = false;
@@ -186,7 +186,7 @@ class Game2048 {
         }
 
         if (gameOver) {
-            alert('Game Over! Your final score is ' + this.score);
+            alert('😭挑战失败你的最终得分是' + this.score + '分');
         }
     }
 
